@@ -1,3 +1,3 @@
-interface IBeer {
-    
+interface IBeer extends IAlcohol {
+
 }

@@ -1,3 +1,7 @@
 interface IAlcohol {
-    type:  IBeer | IChampagne | IRakiq | IRum | ITequilla | IVodka | IWhiskey | IWine | IChampagne 
+    category:  IBeer | IChampagne | IRakiq | IRum | ITequilla | IVodka | IWhiskey | IWine | IChampagne
+    name: String
+    description: String
+    // in ml
+    quantity: number
 }

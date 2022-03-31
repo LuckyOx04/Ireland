@@ -1,3 +1,3 @@
-interface IVodka {
+interface IVodka extends IAlcohol {
     
 }

@@ -1,3 +1,3 @@
-interface ITequilla {
+interface ITequilla extends IAlcohol {
     
 }

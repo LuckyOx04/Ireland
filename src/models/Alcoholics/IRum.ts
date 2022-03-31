@@ -1,3 +1,3 @@
-interface IRum {
+interface IRum extends IAlcohol {
     
 }

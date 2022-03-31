@@ -1,3 +1,0 @@
-interface IWhiskey extends IAlcohol {
-
-}

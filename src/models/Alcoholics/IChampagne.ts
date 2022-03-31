@@ -1,3 +1,0 @@
-interface IChampagne extends IAlcohol{
-    
-}

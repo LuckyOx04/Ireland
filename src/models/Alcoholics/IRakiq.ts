@@ -1,3 +1,0 @@
-interface IRakiq extends IAlcohol {
-
-}

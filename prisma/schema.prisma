@@ -18,3 +18,13 @@ model User {
 
 
 }
+
+model AlcoholicBeverage {
+  id Int @id @default(autoincrement()) @unique
+  category String
+  name String
+  quantity Int
+  description String
+  price Int
+  available Boolean
+}

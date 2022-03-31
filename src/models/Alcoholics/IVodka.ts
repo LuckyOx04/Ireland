@@ -1,3 +1,0 @@
-interface IVodka extends IAlcohol {
-    
-}

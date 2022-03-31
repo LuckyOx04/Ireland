@@ -1,7 +1,9 @@
-interface IAlcohol {
-    category:  IBeer | IChampagne | IRakiq | IRum | ITequilla | IVodka | IWhiskey | IWine | IChampagne
+import { AlcoholicEnum } from "./Alcoholics/AlcoholicEnum";
+
+export interface IAlcohol {
+    category:  AlcoholicEnum
     name: String
     description: String
-    // in ml
-    quantity: number
+    price: number
+    available: boolean
 }

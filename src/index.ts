@@ -1,6 +1,8 @@
 import logger from 'jet-logger';
 import server from './server';
 import { PrismaClient } from "@prisma/client";
+const bodyParser = require("body-parser");
+
 
 const prisma = new PrismaClient();
 

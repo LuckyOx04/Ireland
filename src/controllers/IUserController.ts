@@ -4,7 +4,7 @@
 import { Request, Response } from "express";
 import { IUser } from "../models/IUser";
 import { PrismaClient } from "@prisma/client";
-import crypto from "crypto"
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
 
 const prisma = new PrismaClient();
 
@@ -33,6 +33,10 @@ export let createUser = async (req: Request, res: Response) => {
         }
     }).then((_) => {
         res.status(200).send({status: "OK"})
+    }).catch((err: PrismaClientKnownRequestError) => {
+        if(err.code == "P2002"){
+            res.status(409).send({status: "User already exists with this username."})
+        }
     }).catch((_) => {
         res.status(400).send({status: "Error"})
     })
@@ -69,6 +73,14 @@ export let updateUser = async(req: Request, res: Response) => {
         res.status(400).send({status: "Error"})
     })
 
+}
+
+export let getAllUsers = async(req: Request, res: Response) => {
+
+    prisma.user.findMany({}).then((result) => {
+        res.status(200).send({result: result})
+
+    })
 }
 
 
@@ -114,4 +126,5 @@ export default {
     createUser,
     deleteUser,
     updateUser,
+    getAllUsers,
 }

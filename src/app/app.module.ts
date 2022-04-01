@@ -8,15 +8,19 @@ import { HomeComponent } from './components/home/home-component/home-component';
 import { CookieModule } from 'ngx-cookie';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
+import { HomeGuard } from './guards/home-guard';
+import { HeaderComponent } from './components/header/header/header.component';
+import { FooterComponent } from './components/footer/footer/footer.component';
 
 const routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [HomeGuard]
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
   },
   {
     path: 'login',
@@ -24,7 +28,8 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [HomeGuard]
   }
 ]
 
@@ -34,7 +39,9 @@ const routes: Routes = [
     AppComponent,
     RegisterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent,
+    FooterComponent
     
   ],
   imports: [

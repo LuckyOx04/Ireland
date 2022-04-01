@@ -1,10 +1,28 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken"
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
 
 export let generateToken = async(req: Request, res: Response) => {
 
-    const token = generateAccessToken(req.params.userName)
-    res.status(200).send({status: token})
+    const {username, password}: {username: string, password: string} = {...req.body}
+
+    prisma.user.findFirst({
+      where: {
+        username: username
+      }
+    }).then((user) => {
+      if(user?.password == password){
+        const token = generateAccessToken(username)
+        res.status(200).send({status: token})
+      } else {
+        res.status(400).send({status: "Error"})
+      }
+    }).catch((_) => {
+      res.status(400).send({status: "Error"})
+    })
 
 }
 

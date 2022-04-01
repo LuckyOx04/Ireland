@@ -22,11 +22,10 @@ app.use(cookieParser());
 
 
 app.get("/users/:userName", JWTController.authenticateToken, IUserController.getUser)
-app.get("/users/", IUserController.getAllUsers)
+app.get("/users/", JWTController.authenticateToken, IUserController.getAllUsers)
 app.post("/users/", IUserController.createUser)
 app.delete("/users/:userName", JWTController.authenticateToken, IUserController.deleteUser)
-
-app.put("/users/", IUserController.updateUser)
+app.put("/users/", JWTController.authenticateToken, IUserController.updateUser)
 
 app.post("/alcohols/", JWTController.authenticateToken, AlcoholBeveragesController.createAlcoholicBeverage)
 app.get("/alcohols/:category/:name", JWTController.authenticateToken, AlcoholBeveragesController.getAlcoholicBeverageByCategoryAndName)
@@ -35,6 +34,6 @@ app.get("/alcohols/", JWTController.authenticateToken, AlcoholBeveragesControlle
 app.put("/alcohols/:category/:name/:quantity", JWTController.authenticateToken, AlcoholBeveragesController.updateAlcoholicBeverage)
 app.delete("/alcohols/:category/:name/:quantity", JWTController.authenticateToken, AlcoholBeveragesController.deleteAlcoholicBeverage)
 
-app.post("/auth/createToken/:userName", JWTController.generateToken)
+app.post("/auth/createToken/", JWTController.generateToken)
 
 export default app;

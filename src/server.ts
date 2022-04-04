@@ -20,6 +20,9 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 
+var cors=require('cors');
+
+app.use(cors({origin:true,credentials: true}));
 
 app.get("/users/:userName", JWTController.authenticateToken, IUserController.getUser)
 app.get("/users/", JWTController.authenticateToken, IUserController.getAllUsers)

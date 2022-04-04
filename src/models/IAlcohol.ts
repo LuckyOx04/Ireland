@@ -1,7 +1,7 @@
 import { AlcoholicEnum } from "./Alcoholics/AlcoholicEnum";
 
 export interface IAlcohol {
-    category:  AlcoholicEnum
+    category: AlcoholicEnum
     name: String
     description: String
     price: number

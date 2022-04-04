@@ -1,6 +1,3 @@
-<p>login-component works!</p>
-
-
 <div>
     <h3 *ngIf="noUser">Please input username.</h3>
     <h3 *ngIf="noPassword">Please input password.</h3>
@@ -8,14 +5,16 @@
 
 
 <div class="container">
-    <h3>Don't have an account?</h3>
-    <button (click)="showRegisterForm()">Register</button>
-    <input type="text" placeholder="Enter Username" name="uname" [formControl]="username" required>
+    <label for="uname"><b>Username</b></label>
+    <input class="unameInput" type="text" placeholder="Enter Username" name="uname" [formControl]="username" required>
 
     <br>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" [formControl]="password" required>
+    <input class="passInput" type="password" placeholder="Enter Password" name="psw" [formControl]="password" required>
 
-    <button (click)="loginUser()" type="submit">Login</button>
+    <br>
+
+    <button class="loginButton" (click)="loginUser()" type="submit">Login</button>
+    <p class="paragraphAlign">Don't have an account?<button class="regPageButton" (click)="showRegisterForm()">Register</button></p>
   </div>

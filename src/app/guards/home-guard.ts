@@ -21,7 +21,7 @@ export class HomeGuard implements CanActivate {
 
       if(!canAuth){
         this.router.navigate(['/register'])
-        return false
+        return true
       }
       return true
 

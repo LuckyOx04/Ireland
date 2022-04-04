@@ -1,6 +1,12 @@
 .right{
     width: 100%;
     text-align: center;
+    float: left;
+}
+
+.left {
+    text-align: center;
+    float: left;
 }
 
 .wrapper {

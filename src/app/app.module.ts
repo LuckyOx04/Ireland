@@ -11,6 +11,13 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { HomeGuard } from './guards/home-guard';
 import { HeaderComponent } from './components/header/header/header.component';
 import { FooterComponent } from './components/footer/footer/footer.component';
+import { ShopComponent } from './components/shop/shop.component';
+import { AuthenticationManagerComponent } from './components/auth/authentication-manager/authentication-manager.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Constants } from './Constants';
+import { LogOutComponent } from './components/auth/log-out/log-out.component';
+import { JwtInterceptor } from './services/JWTInterceptor';
 
 const routes: Routes = [
   {
@@ -28,7 +35,6 @@ const routes: Routes = [
   {
     path: '**',
     component: HomeComponent,
-    canActivate: [HomeGuard]
   }
 ]
 
@@ -40,19 +46,30 @@ const routes: Routes = [
     HomeComponent,
     LoginComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ShopComponent,
+    AuthenticationManagerComponent,
+    LogOutComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(routes),
-    CookieModule.forRoot()
+    CookieModule.forRoot(),
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports: [
+    AppComponent,
     RouterModule
   ],
-  providers: [],
+  providers: [
+    Constants,
+    {
+      provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

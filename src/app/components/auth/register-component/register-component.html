@@ -1,6 +1,23 @@
-<app-header></app-header>
 
 <p>register-component works!</p>
 
-<app-footer></app-footer>
 
+<div>
+    <h3 *ngIf="noUser">Please input username.</h3>
+    <h3 *ngIf="noPassword">Please input password.</h3>
+</div>
+
+
+<h3>Have an account?</h3>
+<button (click)="showLoginForm()">Log In!</button>
+<div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" [formControl]="username" required>
+
+    <br>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" [formControl]="password" required>
+
+    <button (click)="registerUser()" type="submit">Register</button>
+  </div>

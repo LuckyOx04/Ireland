@@ -1,0 +1,14 @@
+<p>authentication-manager works!</p>
+<div *ngIf="!this.isLoggedIn()">
+
+
+<app-register-component *ngIf="this.showRegisterForm" (showLoginFormOutput)="hideRegisterForm()"></app-register-component>
+<app-login-component *ngIf="this.showLoginForm" (showRegisterFormOutput)="hideLoginForm()"></app-login-component>
+
+</div>
+
+<div *ngIf="this.isLoggedIn()">
+
+    <app-log-out></app-log-out>
+    
+</div>

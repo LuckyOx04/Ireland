@@ -1,17 +1,21 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Alcohol - Log in</title>
-        <link rel="stylesheet" href="login.component.css"/>
-    </head>
-    <body>
-        <div>
-            <form>
-                <input type="text" name="username"/>
-                <label for="username">Username: </label>
-                <input type="password" name="password"/>
-                <label for="password">Password: </label>
-            </form>
-        </div>
-    </body>
-</html>
+<p>login-component works!</p>
+
+
+<div>
+    <h3 *ngIf="noUser">Please input username.</h3>
+    <h3 *ngIf="noPassword">Please input password.</h3>
+</div>
+
+
+<div class="container">
+    <h3>Don't have an account?</h3>
+    <button (click)="showRegisterForm()">Register</button>
+    <input type="text" placeholder="Enter Username" name="uname" [formControl]="username" required>
+
+    <br>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" [formControl]="password" required>
+
+    <button (click)="loginUser()" type="submit">Login</button>
+  </div>

@@ -24,11 +24,5 @@ export class HomeGuard implements CanActivate {
         return true
       }
       return true
-
-
-
-
-
   }
-  
 }

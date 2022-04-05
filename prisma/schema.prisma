@@ -13,10 +13,9 @@ datasource db {
 model User {
   id Int @id @default(autoincrement())
   username String @unique
+  email String
   password String
-
-
-
+  balance Int @default(0)
 }
 
 model AlcoholicBeverage {

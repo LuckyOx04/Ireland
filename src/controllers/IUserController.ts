@@ -23,13 +23,14 @@ export let getUser = async (req: Request, res: Response) => {
 }
 
 export let createUser = async (req: Request, res: Response) => {
-    const {username, password}: {username: string, password: string} = {...req.body}
+    const {username, password, email}: {username: string, password: string, email:string} = {...req.body}
 
     prisma.user.create({
         data: {
             username: username,
             // Wont encrypt passwords for now, I think i'll be encrypting them on the frontend.
-            password: password
+            password: password,
+            email: email
         }
     }).then((_) => {
         res.status(200).send({status: "OK"})
@@ -99,7 +100,8 @@ function copy(user: IUser): IUser {
     return {
         id: user.id,
         username: user.username,
-        password: user.password
+        password: user.password,
+        email: user.email
     }
 }
 
@@ -109,11 +111,12 @@ function copy(user: IUser): IUser {
  * 
  * @returns 
  */
- function getNew(username: string, password: string): IUser {
+ function getNew(username: string, password: string, email: string): IUser {
     return {
         id: -1,
         username,
-        password: password
+        password: password,
+        email: email
     };
 }
 

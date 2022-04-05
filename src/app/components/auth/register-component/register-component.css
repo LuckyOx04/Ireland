@@ -1,0 +1,49 @@
+.loginPageButton{
+    position: relative;
+    margin-left:1em;
+    color: #ffcc66;
+    background-color: #003566;
+    border: 0px;
+}
+
+.loginPageButton:hover{
+    background-color: #0084ff;
+}
+
+.container{
+    padding-left: 38%;
+    padding-top: 1%;
+}
+
+.unameInput{
+    margin-left: 1em;
+    margin-bottom: 1em;
+}
+
+.passInput{
+    margin-left: 1.15em;
+    margin-bottom: 1em;
+}
+
+.registerButton{
+    position:relative;
+    padding: 0.5em 1em 0.5em 1em;
+    border: 0px;
+    border-radius: 0px;
+    margin-left: 9.3em;
+    color: #ffcc66;
+    background-color: #003566;
+}
+
+.registerButton:hover{
+    background-color: #0084ff;
+}
+
+.paragraphAlign{
+    position: relative;
+    margin-left:7%;
+}
+
+label{
+    font-family: Arial, Helvetica, sans-serif;
+}

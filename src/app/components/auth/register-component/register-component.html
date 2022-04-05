@@ -1,23 +1,21 @@
-
-<p>register-component works!</p>
-
-
 <div>
     <h3 *ngIf="noUser">Please input username.</h3>
     <h3 *ngIf="noPassword">Please input password.</h3>
 </div>
 
 
-<h3>Have an account?</h3>
-<button (click)="showLoginForm()">Log In!</button>
+
 <div class="container">
     <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" [formControl]="username" required>
+    <input class="unameInput" type="text" placeholder="Enter Username" name="uname" [formControl]="username" required>
 
     <br>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" [formControl]="password" required>
+    <input class="passInput" type="password" placeholder="Enter Password" name="psw" [formControl]="password" required> 
 
-    <button (click)="registerUser()" type="submit">Register</button>
-  </div>
+    <br>
+
+    <button class="registerButton" (click)="registerUser()" type="submit">Register</button>
+    <p class="paragraphAlign">Have an account?<button class="loginPageButton" (click)="showLoginForm()">Log In!</button></p>
+</div>

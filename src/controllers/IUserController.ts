@@ -22,6 +22,20 @@ export let getUser = async (req: Request, res: Response) => {
     })
 }
 
+export let getUserBalance = async (req: Request, res: Response) => {
+    let user = req.params.userName;
+
+    prisma.user.findUnique({
+        where: {
+            username: user
+        }
+    }).then((user) => {
+        res.status(200).send({balance: user?.balance})
+    }).catch((_) => {
+        res.status(400).send({status: "Error"})
+    })
+}
+
 export let createUser = async (req: Request, res: Response) => {
     const {username, password, email}: {username: string, password: string, email:string} = {...req.body}
 
@@ -130,4 +144,5 @@ export default {
     deleteUser,
     updateUser,
     getAllUsers,
+    getUserBalance,
 }

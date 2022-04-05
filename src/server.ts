@@ -29,6 +29,7 @@ app.get("/users/", JWTController.authenticateToken, IUserController.getAllUsers)
 app.post("/users/", IUserController.createUser)
 app.delete("/users/:userName", JWTController.authenticateToken, IUserController.deleteUser)
 app.put("/users/", JWTController.authenticateToken, IUserController.updateUser)
+app.get("/users/balance/:userName", JWTController.authenticateToken, IUserController.getUserBalance)
 
 app.post("/alcohols/", JWTController.authenticateToken, AlcoholBeveragesController.createAlcoholicBeverage)
 app.get("/alcohols/:category/:name", JWTController.authenticateToken, AlcoholBeveragesController.getAlcoholicBeverageByCategoryAndName)

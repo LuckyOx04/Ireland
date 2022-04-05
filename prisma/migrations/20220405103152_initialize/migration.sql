@@ -13,6 +13,7 @@ CREATE TABLE "AlcoholicBeverage" (
     "category" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "quantity" INTEGER NOT NULL,
+    "picture" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "price" INTEGER NOT NULL,
     "available" BOOLEAN NOT NULL

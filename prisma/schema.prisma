@@ -23,6 +23,7 @@ model AlcoholicBeverage {
   category String
   name String
   quantity Int
+  picture String
   description String
   price Int
   available Boolean

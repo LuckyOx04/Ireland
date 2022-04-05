@@ -7,6 +7,7 @@ class AlcoholicBeverage implements IAlcohol {
     name: String;
     quantity: Number;
     description: String;
+    picture: String;
     price: number;
     available: boolean;
 
@@ -15,6 +16,7 @@ class AlcoholicBeverage implements IAlcohol {
         this.name = ""
         this.description = ""
         this.price = 0
+        this.picture = ""
         this.available = false
         this.quantity = 0
         this.category = AlcoholicEnum.BEER

@@ -12,10 +12,11 @@ export let createAlcoholicBeverage = async (req: Request, res: Response) => {
         category,
         name,
         quantity,
-        description, 
+        picture,
+        description,
         price, 
         available
-    }: {category: string, name: string, quantity: number, description: string, price: number, available: boolean} = {...req.body}
+    }: {category: string, name: string, quantity: number, description: string, picture: string, price: number, available: boolean} = {...req.body}
 
 
     prisma.alcoholicBeverage.create({
@@ -25,7 +26,8 @@ export let createAlcoholicBeverage = async (req: Request, res: Response) => {
             quantity: quantity,
             description: description,
             price: price,
-            available: available
+            available: available,
+            picture: picture,
         }
     }).then((_) => {
         res.status(200).send({status: "OK"})

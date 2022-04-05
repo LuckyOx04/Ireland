@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie';
 import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie';
+import { Observable } from 'rxjs';
+
 import { Constants } from '../Constants';
-import { catchError, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,8 @@ export class AuthService {
   registerUser(username: string, password: string): Observable<any>{
     return this.http.post(`${this.constants.API_ENDPOINT}/users/`, {
       "username":username,
-      "password":password
+      "password":password,
+      "email":""
     }).pipe()
     
   }

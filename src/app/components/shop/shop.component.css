@@ -2,3 +2,8 @@
     display: grid;
     grid-template-columns: 200px 200px 200px;
   }
+
+.content {
+  margin-left: 16px;
+  display: inline-block;
+}

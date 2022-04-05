@@ -19,7 +19,7 @@ export class ShopComponent implements OnInit {
     }
 
   getAlcohols() {
-    this.alcoholService.getAllAlcohols().subscribe((alc) => {
+    this.alcoholService.getAllAlcohols().subscribe((alc) => { 
       alc.result.map((beverage) => this.alcohols.push(beverage))
     })
   }

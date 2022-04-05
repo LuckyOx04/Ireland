@@ -32,6 +32,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(){
+    console.log("call")
     if(this.username.value.length == 0){
       this.noUser = true
     }

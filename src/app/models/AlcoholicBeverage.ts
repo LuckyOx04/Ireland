@@ -2,17 +2,21 @@ import {AlcoholicEnum} from './AlcoholicEnum'
 
 export class AlcoholicBeverage {
 
+    id: number;
     category: AlcoholicEnum;
     name: String;
     quantity: Number;
     description: String;
+    picture: string;
     price: number;
     available: boolean;
 
 
     constructor(){
+        this.id = 0
         this.name = ""
         this.description = ""
+        this.picture = ""
         this.price = 0
         this.available = false
         this.quantity = 0
@@ -42,6 +46,11 @@ export class AlcoholicBeverage {
 
     setAvailability(available: boolean) : AlcoholicBeverage {
         this.available = available
+        return this
+    }
+
+    setId(id: number): AlcoholicBeverage {
+        this.id = id
         return this
     }
 

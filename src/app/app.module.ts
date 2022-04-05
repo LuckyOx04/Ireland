@@ -18,6 +18,7 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { Constants } from './Constants';
 import { LogOutComponent } from './components/auth/log-out/log-out.component';
 import { JwtInterceptor } from './services/JWTInterceptor';
+import { ShopItemComponent } from './components/shop/shop-item/shop-item.component';
 
 const routes: Routes = [
   {
@@ -49,7 +50,8 @@ const routes: Routes = [
     FooterComponent,
     ShopComponent,
     AuthenticationManagerComponent,
-    LogOutComponent
+    LogOutComponent,
+    ShopItemComponent
     
   ],
   imports: [

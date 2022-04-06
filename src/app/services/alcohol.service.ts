@@ -24,6 +24,11 @@ export class AlcoholService {
 
     if(category){
       queryURL = `${queryURL}/${category}`
+
+      if(category == 'ALL'){
+        queryURL =`${this.constants.API_ENDPOINT}/alcohols`
+      }
+      
     }
 
     if(name){

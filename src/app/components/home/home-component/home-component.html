@@ -1,5 +1,7 @@
-<app-header></app-header>
-<p>home-component works!</p>
-<app-shop></app-shop>
+<app-header (selectedAlcohol)="setSelectedAlcohol($event)"></app-header>
+<app-basket [addElementToBasket]="inputElement"></app-basket>
+
+<app-shop [selectedAlcohol]="selectedAlcohol" (emitChosenElementToBasket)="emit($event)"></app-shop>
+
 
 <app-footer></app-footer>

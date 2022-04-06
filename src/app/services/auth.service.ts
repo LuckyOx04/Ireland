@@ -23,15 +23,6 @@ export class AuthService {
     return this.cookie.get("requireAuth")
   }
 
-  registerUser(username: string, password: string): Observable<any>{
-    return this.http.post(`${this.constants.API_ENDPOINT}/users/`, {
-      "username":username,
-      "password":password,
-      "email":""
-    }).pipe()
-    
-  }
-
   getUserToken(username: string, password: string): Observable<any>{
     return this.http.post(`${this.constants.API_ENDPOINT}/auth/createToken/`, {
       "username":username,

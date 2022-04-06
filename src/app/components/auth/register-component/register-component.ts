@@ -4,6 +4,8 @@ import { FormControl } from '@angular/forms';
 import { CookieService } from 'ngx-cookie';
 import { AuthService } from 'src/app/services/auth.service';
 import { Output, EventEmitter } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register-component',
@@ -16,11 +18,13 @@ export class RegisterComponent implements OnInit {
 
   noPassword: boolean = false
   noUser: boolean = false
+  userExists: boolean = false
 
   username = new FormControl('', Validators.required);
   password = new FormControl('', Validators.required);
+  
 
-  constructor(private authService: AuthService, private cookies: CookieService) { 
+  constructor(private authService: AuthService, private cookies: CookieService, private userService: UserService) { 
     
   }
 
@@ -32,15 +36,17 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(){
-    console.log("call")
+
     if(this.username.value.length == 0){
       this.noUser = true
+      return
     }
     if(this.password.value.length == 0){
       this.noPassword = true
+      return
     }
 
-    this.authService.registerUser(this.username.value, this.password.value).subscribe(object => {
+    this.userService.registerUser(this.username.value, this.password.value).subscribe(object => {
       console.log("result: " + object['status'])
       this.authService.getUserToken(this.username.value, this.password.value).subscribe(result => {
         console.log("sndresult: " + result['status'])
@@ -48,6 +54,12 @@ export class RegisterComponent implements OnInit {
 
         this.cookies.put("requireAuth", token)
       })
+    },
+    (error: HttpErrorResponse) => {
+      // User already exists.
+      if(error.status == 409){
+        this.userExists = true
+      }
     })
   }
 

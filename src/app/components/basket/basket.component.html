@@ -1,0 +1,25 @@
+
+
+<div *ngIf="basket.length != 0">
+    <div *ngFor="let i of basket">
+        <div *ngIf="i?.category != undefined">
+            <h1>Product: {{i?.category}}: {{i?.name}}</h1>
+            <h2>Price: {{i?.price}}</h2>
+        </div>
+    </div>
+
+
+    <div>
+        <h1>All price: {{calculateSumPrice()}}</h1>
+    </div>
+
+    <div>
+
+    <button (click)="this.basket.pop()">Remove last</button>
+    <button (click)="this.basket = []">Clear</button>
+    <button *ngIf="this.isUserLogged()" (click)="checkoutAction()">Checkout</button>
+    <h3 *ngIf="!this.isUserLogged()">Please log in to check out.</h3>
+
+</div>
+
+</div>

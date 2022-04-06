@@ -8,11 +8,13 @@
         
         
         <div class="right">
-            WINE
-            BEER
-            SPIRITS
-            LOGIN
-            BASKET
+            <app-log-out *ngIf="this.isLoggedIn()"></app-log-out>
+            <button (click)="emitAlcoholChange('Wine')">WINE</button>
+            <button (click)="emitAlcoholChange('Beer')">BEER</button>
+            <button (click)="emitAlcoholChange('Whisky')">Spirits</button>
+            <button (click)="emitAlcoholChange('All')">ALL</button>
+            <h2 *ngIf="this.isLoggedIn()">Available money: {{this.userBalance}}$</h2>
+            
         </div>
 
         <div>
@@ -21,6 +23,3 @@
     
     
 </body>
-
-
-<p>header works!</p>

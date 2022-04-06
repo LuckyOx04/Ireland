@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { AlcoholicBeverage } from 'src/app/models/AlcoholicBeverage';
 import { AlcoholicEnum } from 'src/app/models/AlcoholicEnum';
 
@@ -9,28 +9,31 @@ import { AlcoholicEnum } from 'src/app/models/AlcoholicEnum';
 })
 export class ShopItemComponent implements OnInit {
 
+  @Input() drink!: AlcoholicBeverage;
 
-  @Input()
-  drink!: AlcoholicBeverage;
-  
+  @Output() chosenBeverage = new EventEmitter<AlcoholicBeverage>();
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.drink.category)
-    console.log(typeof this.drink.category)
-    if(this.drink.category.toString() =="BEER"){
-      this.drink.picture = '/assets/Beer/' + this.drink.picture + ".png"
-      console.log("lol")
-    }
-    if(this.drink.category.toString() == "WHISKY"){
-      this.drink.picture = '/assets/Whisky/' + this.drink.picture + ".png"
-      console.log(this.drink.picture)
-    }
-    
+    this.drink.picture = this.createFileExtension(this.drink.picture)
+  }
+
+  emitChosenBeverage(beverage: AlcoholicBeverage): void {
+    this.chosenBeverage.emit(beverage)
   }
 
 
+  createFileExtension(picture: string): string{
+
+    if(this.drink.category.toString() =="BEER"){
+      return '/assets/Beer/' + picture + ".png"
+    }
+    if(this.drink.category.toString() == "WHISKY"){
+      return '/assets/Whisky/' + picture + ".png"
+    }
+    return picture
+  }
   
 
 }

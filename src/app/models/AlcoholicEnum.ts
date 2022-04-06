@@ -1,12 +1,14 @@
 export enum AlcoholicEnum {
-    BEER,
-    WINE,
-    CHAMPAGNE,
-    RAKIQ,
-    VODKA,
-    RUM,
-    WHISKEY,
-    BRANDY
+  BEER = "BEER",
+  WINE = "WINE",
+  CHAMPAGNE = "CHAMPAGNE",
+  RAKIQ = "RAKIQ",
+  VODKA = "VODKA",
+  RUM = "RUM",
+  WHISKY = "WHISKY",
+  SPIRITS = "SPIRITS",
+  BRANDY = "BRANDY",
+  ALL = "ALL",
 }
 
 
@@ -19,9 +21,10 @@ export function getValue(value: String): AlcoholicEnum {
         case "Rakiq": return AlcoholicEnum.RAKIQ
         case "Vodka": return AlcoholicEnum.VODKA
         case "RUM": return AlcoholicEnum.RUM
-        case "Whiskey": return AlcoholicEnum.WHISKEY
+        case "Whisky": return AlcoholicEnum.WHISKY
         case "Brandy": return AlcoholicEnum.BRANDY
+        case "Spirits": return AlcoholicEnum.SPIRITS
 
-        default: return AlcoholicEnum.BEER
+        default: return AlcoholicEnum.ALL
     }
 }

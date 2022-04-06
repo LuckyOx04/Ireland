@@ -3,4 +3,5 @@
 <h4>{{drink.quantity}}</h4>
 <h3>{{drink.description}}</h3>
 <h4>{{drink.available}}</h4>
-<button>BUY!</button>
+<h5>{{drink.price}}</h5>
+<button (click)="emitChosenBeverage(this.drink)">BUY!</button>

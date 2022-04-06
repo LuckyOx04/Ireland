@@ -19,6 +19,7 @@ import { Constants } from './Constants';
 import { LogOutComponent } from './components/auth/log-out/log-out.component';
 import { JwtInterceptor } from './services/JWTInterceptor';
 import { ShopItemComponent } from './components/shop/shop-item/shop-item.component';
+import { BasketComponent } from './components/basket/basket.component';
 
 const routes: Routes = [
   {
@@ -51,7 +52,8 @@ const routes: Routes = [
     ShopComponent,
     AuthenticationManagerComponent,
     LogOutComponent,
-    ShopItemComponent
+    ShopItemComponent,
+    BasketComponent
     
   ],
   imports: [

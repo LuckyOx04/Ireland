@@ -18,6 +18,8 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@types/lodash": "^4.14.181",
+    "lodash": "^4.17.21",
     "ngx-cookie": "^5.0.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

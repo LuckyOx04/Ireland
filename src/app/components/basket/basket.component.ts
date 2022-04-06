@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, SimpleChanges, ChangeDetectionStrategy, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { AlcoholicBeverage } from 'src/app/models/AlcoholicBeverage';
 import { AuthService } from 'src/app/services/auth.service';
 import { CheckoutService } from 'src/app/services/checkout.service';
@@ -7,25 +7,35 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
-  styleUrls: ['./basket.component.css']
+  styleUrls: ['./basket.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BasketComponent implements OnChanges {
+export class BasketComponent implements OnChanges, AfterViewInit {
 
   basket: AlcoholicBeverage[] = []
 
-  @Input() addElementToBasket!: AlcoholicBeverage
+  @Input() addElementToBasket!: AlcoholicBeverage | undefined
 
 
   
-  constructor(private authService: AuthService, private checkoutService: CheckoutService, private userService: UserService) { }
+  constructor(private authService: AuthService, private checkoutService: CheckoutService, private userService: UserService,
+    private cdRef: ChangeDetectorRef) { }
+  ngAfterViewInit(): void {
+    this.cdRef.detectChanges();
+  }
 
-  ngOnChanges(): void {
-    console.log("We have: " + this.addElementToBasket)
-    console.log(this.addElementToBasket === undefined)
-    if(!(this.addElementToBasket === undefined)){
-      console.log(this.addElementToBasket.name)
-      this.basket.push(this.addElementToBasket)
+  ngOnChanges(changes: SimpleChanges): void {
+    try {
+      if(!(this.addElementToBasket === undefined || this.addElementToBasket.name == '')){
+        console.log(this.addElementToBasket.name)
+        this.basket.push(this.addElementToBasket)
+        this.addElementToBasket = undefined
+  
+      }  
+    } catch (error ) {
+      
     }
+    
   }
 
   calculateSumPrice(): Number {
@@ -41,6 +51,11 @@ export class BasketComponent implements OnChanges {
 
   isUserLogged(){
     return this.authService.getAuth()
+  }
+
+  clearBasket(){
+    console.log(this.basket)
+    this.basket = []
   }
 
 }

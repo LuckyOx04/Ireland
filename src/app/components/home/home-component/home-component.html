@@ -1,5 +1,5 @@
 <app-header (selectedAlcohol)="setSelectedAlcohol($event)"></app-header>
-<app-basket [addElementToBasket]="inputElement"></app-basket>
+<app-basket [addElementToBasket]="emitToBasket()"></app-basket>
 
 <app-shop [selectedAlcohol]="selectedAlcohol" (emitChosenElementToBasket)="emit($event)"></app-shop>
 

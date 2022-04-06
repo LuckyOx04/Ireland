@@ -16,7 +16,7 @@
     <div>
 
     <button (click)="this.basket.pop()">Remove last</button>
-    <button (click)="this.basket = []">Clear</button>
+    <button (click)="this.clearBasket()">Clear</button>
     <button *ngIf="this.isUserLogged()" (click)="checkoutAction()">Checkout</button>
     <h3 *ngIf="!this.isUserLogged()">Please log in to check out.</h3>
 

@@ -13,7 +13,7 @@ export class HomeComponent implements OnChanges {
 
 
   @Input()
-  inputElement!: AlcoholicBeverage
+  inputElement!: AlcoholicBeverage | undefined
 
   constructor() { }
 
@@ -33,4 +33,15 @@ export class HomeComponent implements OnChanges {
     this.inputElement = beverage
   }
 
+  emitToBasket(): AlcoholicBeverage | undefined{
+    if(this.inputElement !== undefined){
+      var obj = Object.create(this.inputElement)
+      this.inputElement = new AlcoholicBeverage()
+      return obj
+    }
+    return undefined
+    
+  }
+
 }
+

@@ -10,6 +10,7 @@ export class AlcoholicBeverage {
     picture: string;
     price: number;
     available: boolean;
+    createdAt: number = Date.now();
 
 
     constructor(){
@@ -21,6 +22,7 @@ export class AlcoholicBeverage {
         this.available = false
         this.quantity = 0
         this.category = AlcoholicEnum.BEER
+        this.createdAt = Date.now()
         return this;
     }
 
@@ -54,4 +56,8 @@ export class AlcoholicBeverage {
         return this
     }
 
+    setCreatedAt(createdAt: number): AlcoholicBeverage {
+        this.createdAt = createdAt
+        return this
+    }
 }
